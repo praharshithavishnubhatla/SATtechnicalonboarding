@@ -11,7 +11,22 @@
   <body>
     <noscript>You need to enable Javascript to run this application.</noscript>
     <div id="app">
-      <!-- Your react app will be rendered here -->
+      import React, { useState, useEffect } from 'react';
+
+function App() {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    (async function () {
+      const { text } = await( await fetch(`/api/message`)).json();
+      setData(text);
+    })();
+  });
+
+  return <div>{data}</div>;
+}
+
+export default App;
     </div>
     <script type="module" src="index.js"></script>
   </body>
