@@ -14,23 +14,30 @@ import Portfolio from "./Components/Portfolio";
 
 import "./styles.css";
 
-/**
- * This object represents your information. The project is set so that you
- * only need to update these here, and values are passed a properties to the
- * components that need that information.
- *
- * Update the values below with your information.
- *
- * If you don't have one of the social sites listed, leave it as an empty string.
- */
+import React, { useState, useEffect } from 'react';
+
+function App() {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    (async function () {
+      const { text } = await( await fetch(`/api/message`)).json();
+      setData(text);
+    })();
+  });
+
+  return <div>{data}</div>;
+}
+
+export default App;
 const siteProps = {
-  name: "Alexandrie Grenier",
+  name: "PRAHARSHITHA VISHNUBHATLA",
   title: "Web Designer & Content Creator",
-  email: "alex@example.com",
+  email: "praharshithavishnubhatla.com",
   gitHub: "microsoft",
   instagram: "microsoft",
   linkedIn: "satyanadella",
-  medium: "",
+  medium: "english",
   twitter: "microsoft",
   youTube: "Code",
 };
